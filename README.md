@@ -1,6 +1,5 @@
 This repository contains the source code for a fully localized Retrieval-Augmented Generation (RAG) platform, developed as a bachelor's degree project at the Politehnica University of Timișoara. The system enables semantic search and LLM inference over user-provided PDF documents with zero external API dependencies, ensuring strict data privacy.
 
-Architecture
 The application is fully containerized using Docker and segmented into three microservices:
 
 Frontend: React.js / Vite
