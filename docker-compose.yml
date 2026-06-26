@@ -1,0 +1,29 @@
+services:
+  frontend:
+    build: ./frontend
+    container_name: rag_frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+  backend:
+    build: ./backend
+    container_name: rag_backend
+    ports:
+      - "8000:8000"
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434
+    volumes:
+      - ./backend/chroma_db:/app/chroma_db
+    depends_on:
+      - ollama
+
+  ollama:
+    build: ./ai
+    container_name: rag_ollama
+    ports:
+      - "11434:11434"
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
